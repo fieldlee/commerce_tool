@@ -1,0 +1,22 @@
+[package]
+name = "commerce_cache"
+version = "0.1.0"
+edition = "2021"
+author = "fieldlee<249608904@qq.com>"
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[lib]
+path = "src/lib.rs"
+
+[dependencies]
+#serde and json
+serde = { version = "1", features = ["derive"] }
+serde_json = "1.0"
+#async trait
+async-trait = "0.1"
+#redis
+redis = { version = "0.22.1", features = ["tokio"] }
+#log
+log = "0.4"
+commerce_command = { path = "../commerce_command" }
+# 配置类定义
+commerce_config = { path = "../commerce_config" }

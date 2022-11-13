@@ -1,0 +1,16 @@
+[package]
+name = "commerce_orm"
+version = "0.1.0"
+edition = "2021"
+author = "fieldlee<249608904@qq.com>"
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+path = "src/lib.rs"
+[dependencies]
+rbson = "2.0"
+rbatis = { version = "3.0", default-features = false, features = ["mysql", "runtime-async-std-rustls"] }
+mongodb = { version = "2.1.0", default-features = false, features = ["async-std-runtime"] }
+commerce_domain = { path = "../commerce_domain" }
+commerce_command = { path = "../commerce_command" }
+commerce_config = { path = "../commerce_config" }

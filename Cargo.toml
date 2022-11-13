@@ -1,0 +1,59 @@
+[workspace]
+resolver = "2"
+members = [
+    "commerce_cache",
+    "commerce_command",
+    "commerce_domain",
+    "commerce_config",
+    "commerce_orm",
+    "commerce_sms",
+    "commerce_storage",
+    "commerce_wechat",
+    "commerce_tests",
+    "commerce_devtools",
+    "commerce_web",
+    "commerce_crawler"
+]
+exclude = ["commerce_tests","commerce_devtools"]
+
+[profile.release]
+codegen-units = 1  # codegen-units 来指定编译器在编译一个crate的时候要能其切分成多少份来同时处理, 1指定不切分，则不进行切分，以增加套用更多的优化的机会，提升程序性能，但可能会让编译时间上升。
+incremental = true
+lto = true   #   true==》 fat   lto="thin"    thin fat
+opt-level = 'z' # Optimize for size
+                # 0：不进行优化，并且激活#[cfg(debug_assertions)]属性。
+                # 1：允许基本优化。
+                # 2：允许常用的优化。
+                # 3：允许所有的优化
+                # "s"：允许常用的优化，外加一些能缩小体积的优化。
+                # "z"：类似"s"，但更偏重于体积的优化(可能会降低性能)。
+
+[profile.release.package.commerce_cache]
+opt-level = 3
+
+[profile.release.package.commerce_command]
+opt-level = 3
+
+[profile.release.package.commerce_config]
+opt-level = 3
+
+[profile.release.package.commerce_orm]
+opt-level = 3
+
+[profile.release.package.commerce_sms]
+opt-level = 3
+
+[profile.release.package.commerce_storage]
+opt-level = 3
+
+[profile.release.package.commerce_web]
+opt-level = 3
+
+[profile.release.package.commerce_wechat]
+opt-level = 3
+
+[profile.release.package.commerce_tests]
+opt-level = 3
+
+[profile.release.package.commerce_devtools]
+opt-level = 3
